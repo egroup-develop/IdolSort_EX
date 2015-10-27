@@ -1,0 +1,106 @@
+<!Doctype html>
+<html ng-app="myApp">
+<head>
+</head>
+<body>
+  <div ng-controller="myController as myCtrl">
+    <div>
+      元の配列{{myCtrl.items}}</br>
+      {{myCtrl.main()}}</br>
+      <p>{{myCtrl.lItem}}と{{myCtrl.rItem}}のどっちが好み？{{myCtrl.lItem}}なら左ボタンを, {{myCtrl.rItem}}なら右ボタンを押してね</p>
+      <p>
+        <button ng-click="myCtrl.lButton()">左</button>
+        <button ng-click="myCtrl.rButton()">右</button>
+      </p>
+      eval={{myCtrl.eval}}</br>
+      run={{myCtrl.run}}</br>
+      Final answer: {{myCtrl.answer}}</br>
+    </div>
+  </div>
+
+  <!-- jsファイルここから -->
+  <script src="../js/angular.min.js"></script>
+  <script>
+  angular.module('myApp', [])
+    .controller('myController', function() {
+    var myCon = this;
+
+    /*** マージソート処理 ***/
+    myCon.lItem;
+    myCon.rItem;
+    var merge = function(left, right){
+      var tmp = [];
+      var i = 0, j = 0;
+      var eval = 0;
+      myCon.eval;
+      myCon.run;
+
+      myCon.lButton = function(){
+        eval = 0;
+        myCon.eval = eval;
+        myCon.run = 1;
+      }
+      myCon.rButton = function(){
+        eval = 1;
+        myCon.eval = eval;
+        myCon.run = 1;
+      }
+
+      while((i < left.length) && (j < right.length)){
+        myCon.lItem = left[i];
+        myCon.rItem = right[j];
+
+        if(eval == 1){
+          tmp[i+j] = left[i];
+          i++;
+        }else if(eval == 0){
+          tmp[i+j] = right[j];
+          j++;
+        }
+      }
+
+      while(i < left.length){
+        tmp[i+j] = left[i];
+        i++;
+      }
+      
+      while(j < right.length){
+        tmp[i+j] = right[j];
+        j++;
+      }
+
+      return tmp;
+    }
+
+    /*** マージソートのメイン ***/
+    var mergeSort = function(array){
+      if(array.length < 2){
+        return array;
+      }
+
+      var mid = parseInt(array.length/2);
+      var left =[];
+      var right = [];
+  
+      for(var i = 0; i < mid; i++){
+        left[i] = array[i];
+      }
+        
+      var k = 0;
+      for(var j = mid; j < array.length; j++){
+        right[k] = array[j];
+        k++;
+      }
+  
+      return merge(mergeSort(left), mergeSort(right));
+    }
+    
+    /*** マージソートの入り口 ***/
+    myCon.main = function(){
+      myCon.items = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+      myCon.answer =  mergeSort(myCon.items);
+    }
+  });
+</script>
+</body>
+</html>

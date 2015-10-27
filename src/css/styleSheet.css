@@ -1,0 +1,50 @@
+/**
+ * 左画像, 引き分け, 右画像を包含している領域 
+ */
+div#matome{
+  width: 800px;
+  height: 600px;
+}
+
+/**
+ * 左画像
+ */
+div#leftCell{
+  float: left;
+  height: 250px;
+}
+
+/**
+ * 右画像
+ */
+div#rightCell{
+  float: left;
+  height: 250px;
+}
+
+/**
+ * 引き分け
+ */
+div#centerCell{
+  float: left;
+  margin-top: 500px;
+}
+
+/*** 結果のテーブルここから***/
+#resultTable{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#resultTable th{
+  text-align: center;
+}
+
+#resultTable td.score{
+  text-align: right;
+}
+
+#resultTable td.name{
+  text-align: left;
+}
+/*** 結果のテーブルここまで ***/

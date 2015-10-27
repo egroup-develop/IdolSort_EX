@@ -1,0 +1,94 @@
+<!-- JSの同期処理を調べるか, ハロプロソートを参考にするかな -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="Findol proto : ">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+
+  <title>アイドルソート！！！</title>
+</head>
+
+<body>
+ <p>hogehoge</p>
+
+<script>
+document.write("おらおらおらおらおら");
+</script>
+
+<script>
+var merge = function(left, right){
+  var tmp = [];
+  var i = 0, j = 0;
+
+  while((i < left.length) && (j < right.length)){
+    if(left[i] <= right[j]){
+      tmp[i+j] = left[i];
+      i++;
+    }else{
+      tmp[i+j] = right[j];
+      j++;
+    }
+  }
+
+  while(i < left.length){
+    tmp[i+j] = left[i];
+    i++;
+  }
+
+  while(j < right.length){
+    tmp[i+j] = right[j];
+    j++;
+  }
+/*
+var a = 0;
+function func1(){
+  if(a < 2){
+    a++;
+    alert("hoge" + a);
+  }else{
+    alert("END");
+    return a;
+  }
+}
+function func2(val){
+  alert("call func2: " + val);
+}
+
+timerID = setInterval(function(){
+  value = func1();
+  if(value == 2){
+    func2(value);
+    clearInterval(timerID);
+    timerID = null;
+  }
+}, 100);
+*/
+  return tmp;
+}
+
+var mergeSort = function(array){
+  if(array.length < 2){
+    return array;
+  }
+
+  var mid = parseInt(array.length / 2);
+  var left = array.slice(0, mid);
+  var right = array.slice(mid, array.length);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+var main = function(){
+  ary = [4, 3, 2, 1];
+  document.write(mergeSort(ary));
+  document.write("エクセレント！！！！");
+}
+main();
+
+</script>
+</body>
+</html>

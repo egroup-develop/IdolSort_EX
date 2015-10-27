@@ -1,0 +1,1 @@
+function toNameFace(r){var t=Names[r],s="";return s="00"+String(r+1),s=4==s.length?s.substr(1,3):s.substr(0,3),t='<img src="../imgs/'+s+'.jpg" width="300"><br>'+t}function toNameFace0(r){var t=Names[r];return t}function Person(r,t){this.id=r,this.score=t,this.rank=0}var Names=new Array("最上もが","夢眠ねむ","藤咲彩音","相沢梨紗","成瀬瑛美","小松菜奈","橋本かんな","久住小春","佐野ひなこ","篠崎愛");
